@@ -14653,6 +14653,7 @@ div.jp-OutputPrompt {
 <li><a href="https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f">https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f</a></li>
 <li><a href="https://www.michaelkam.id/data-visualisation/2020/06/28/creating-an-interactive-presentation-with-jupyter-notebook-and-plotly.html">https://www.michaelkam.id/data-visualisation/2020/06/28/creating-an-interactive-presentation-with-jupyter-notebook-and-plotly.html</a></li>
 <li><a href="https://blog.kdheepak.com/jupyter-notebook-revealjs-and-github-pages.html">https://blog.kdheepak.com/jupyter-notebook-revealjs-and-github-pages.html</a></li>
+<li><a href="https://nbconvert.readthedocs.io/en/latest/config_options.html">https://nbconvert.readthedocs.io/en/latest/config_options.html</a></li>
 </ul>
 
 </div>
@@ -14822,15 +14823,13 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Tests">Tests<a class="anchor-link" href="#Tests">&#182;</a></h2><p>A <code>sciunit.Test</code> class must contain:</p>
 <ol>
-<li>Required model capabilities</li>
-<li>Type of score</li>
+<li>Required model capabilities and type of score</li>
 <li><code>generate_prediction</code> to get model prediction</li>
 <li><code>compute_score</code> to compute a <code>sciunit.Score</code></li>
 </ol>
-<p>Example test class:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EqualsTest</span><span class="p">(</span><span class="n">sciunit</span><span class="o">.</span><span class="n">Test</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tests if the model predicts </span>
-<span class="sd">    the same number as the observation.&quot;&quot;&quot;</span>   
+<div class="highlight"><pre><span></span><span class="c1">## Example test class</span>
+<span class="k">class</span> <span class="nc">EqualsTest</span><span class="p">(</span><span class="n">sciunit</span><span class="o">.</span><span class="n">Test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tests if the model predicts the same number as the observation.&quot;&quot;&quot;</span>   
 
     <span class="n">required_capabilities</span> <span class="o">=</span> <span class="p">(</span><span class="n">ProducesNumber</span><span class="p">,)</span> <span class="c1"># The one capability required for a model to take this test.  </span>
     <span class="n">score_type</span> <span class="o">=</span> <span class="n">sciunit</span><span class="o">.</span><span class="n">scores</span><span class="o">.</span><span class="n">BooleanScore</span> <span class="c1"># This test&#39;s &#39;judge&#39; method will return a BooleanScore.  </span>
@@ -14843,8 +14842,8 @@ div.jp-OutputPrompt {
         <span class="n">score</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Passing score if the prediction equals the observation&#39;</span>
         <span class="k">return</span> <span class="n">score</span>
 </pre></div>
-<p>Example test instance:</p>
-<div class="highlight"><pre><span></span><span class="c1"># create test instances</span>
+<div class="highlight"><pre><span></span><span class="c1">## Example test instance</span>
+<span class="c1"># create test instances</span>
 <span class="n">equals_37_test</span> <span class="o">=</span> <span class="n">EqualsTest</span><span class="p">({</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;=37&#39;</span><span class="p">)</span> <span class="c1"># Test model output equals 37.</span>
 <span class="n">equals_1_test</span> <span class="o">=</span> <span class="n">EqualsTest</span><span class="p">({</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;=1&#39;</span><span class="p">)</span> <span class="c1"># Test model output equals 1.  </span>
 
@@ -14927,7 +14926,7 @@ div.jp-OutputPrompt {
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Sciunit is only one way of tackling this problem. It requires support and time to write the tests but they can be wrapped around the final model. Test can be applied across models.</p>
+<p>SciUnit is only one way of tackling this problem. It requires support and time to write the tests but they can be wrapped around the final model. Test can be applied across models.</p>
 <h3 id="Model-validation:">Model validation:<a class="anchor-link" href="#Model-validation:">&#182;</a></h3><ul>
 <li>sciunit (python)</li>
 <li>scinunits (linux)</li>
@@ -14939,8 +14938,8 @@ div.jp-OutputPrompt {
 </ul>
 <p><strong>References</strong>:</p>
 <ul>
-<li>Sciunit <a href="https://github.com/cyrus-/papers/raw/master/sciunit-icse14/sciunit-icse14.pdf">paper</a></li>
-<li>Sciunit <a href="https://sciunit.readthedocs.io/en/latest/">docs and tutorials</a></li>
+<li>SciUnit <a href="https://github.com/cyrus-/papers/raw/master/sciunit-icse14/sciunit-icse14.pdf">paper</a></li>
+<li>SciUnit <a href="https://sciunit.readthedocs.io/en/latest/">docs and tutorials</a></li>
 </ul>
 
 </div>
@@ -14987,7 +14986,7 @@ require(
         Reveal.addEventListener('slidechanged', update);
 
         function setScrollingSlide() {
-            var scroll = false
+            var scroll = true
             if (scroll === true) {
               var h = $('.reveal').height() * 0.95;
               $('section.present').find('section')
